@@ -1,5 +1,5 @@
 // Pantalla "Inicio": primera pestaña de las Bottom Tabs (Drawer → Principal → Inicio).
-// Tiene un botón que salta al Stack de productos, que está en otra rama del Drawer.
+// Tiene un botón que salta al Stack de productos, que vive dentro de la pestaña "Otro".
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -11,15 +11,15 @@ export default function InicioScreen({ navigation }) {
         <Ionicons name="navigate-circle" size={64} color="#2563EB" />
         <Text style={styles.title}>Navegación en React Native</Text>
         <Text style={styles.text}>
-          Esta app combina tres navegadores: Drawer, Bottom Tabs y Stack. Abrí el menú lateral o
-          tocá el botón para ver los productos.
+          Esta app combina tres navegadores: Drawer, Bottom Tabs y Stack. Usá las pestañas de abajo
+          o tocá el botón para ver los productos.
         </Text>
 
         {/* Pressable detecta toques. "pressed" vale true mientras el dedo está apoyado. */}
         <Pressable
           style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
-          // Navegación anidada: vamos a "Productos" (Drawer) y adentro a la pantalla "Lista" (Stack).
-          onPress={() => navigation.navigate('Productos', { screen: 'Lista' })}
+          // Navegación anidada: vamos a la pestaña "Otro" (Tabs) y adentro a la pantalla "Lista" (Stack).
+          onPress={() => navigation.navigate('Otro', { screen: 'Lista' })}
         >
           <Text style={styles.buttonText}>Ver productos</Text>
         </Pressable>

@@ -1,5 +1,5 @@
 // Native Stack de productos: "Lista" → "Detalles".
-// Está anidado dentro del Drawer, en la opción "Productos".
+// Está anidado dentro de las Bottom Tabs, en la pestaña "Otro" (Drawer → Principal → Otro).
 // En un Stack las pantallas se apilan: Detalles se pone encima de Lista y "Volver" la saca.
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Lista from '../screens/carpeta1/Lista';

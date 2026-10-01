@@ -1,18 +1,31 @@
-// Pantalla "Otro": segunda pestaña de las Bottom Tabs (Drawer → Principal → Otro).
-// Sirve para mostrar el cambio entre pestañas sin perder el header del Drawer.
-import { View, Text, StyleSheet } from 'react-native';
+// Pantalla "Guía": tercera pestaña de las Bottom Tabs (Drawer → Principal → Guía).
+// Explica qué es cada producto de informática, usando el campo "explicacion" de data.js.
+import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import productos from '../../data/data';
 
 export default function OtroScreen() {
   return (
     <View style={styles.container}>
-      <View style={styles.card}>
-        <Ionicons name="apps" size={64} color="#2563EB" />
-        <Text style={styles.title}>Otra pestaña</Text>
-        <Text style={styles.text}>
-          Cambiaste de pestaña con las Bottom Tabs. El header de arriba sigue siendo el del Drawer.
-        </Text>
-      </View>
+      <FlatList
+        // data: el mismo array de productos que usa Lista.
+        data={productos}
+        // keyExtractor: clave única de cada item.
+        keyExtractor={(item) => item.id}
+        // renderItem: cada item es una tarjeta con el ícono, el nombre y qué es.
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <View style={styles.cardHeader}>
+              <View style={styles.iconBox}>
+                <Ionicons name={item.icono} size={26} color="#2563EB" />
+              </View>
+              <Text style={styles.nombre}>{item.nombre}</Text>
+            </View>
+            <Text style={styles.explicacion}>{item.explicacion}</Text>
+          </View>
+        )}
+        contentContainerStyle={styles.list}
+      />
     </View>
   );
 }
@@ -21,31 +34,44 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F1F5F9',
-    justifyContent: 'center',
-    padding: 20,
+  },
+  list: {
+    padding: 16,
   },
   card: {
     backgroundColor: '#FFFFFF',
     borderRadius: 16,
-    padding: 24,
-    alignItems: 'center',
+    padding: 16,
+    marginBottom: 12,
     shadowColor: '#0F172A',
     shadowOpacity: 0.08,
     shadowRadius: 12,
     shadowOffset: { width: 0, height: 4 },
     elevation: 3,
   },
-  title: {
-    fontSize: 22,
+  cardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  iconBox: {
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    backgroundColor: '#F1F5F9',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  nombre: {
+    flex: 1,
+    fontSize: 17,
     fontWeight: 'bold',
     color: '#0F172A',
-    marginTop: 12,
+    marginLeft: 12,
   },
-  text: {
+  explicacion: {
     fontSize: 15,
     color: '#64748B',
-    textAlign: 'center',
-    marginTop: 8,
+    marginTop: 10,
     lineHeight: 22,
   },
 });

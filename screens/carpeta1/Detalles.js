@@ -1,4 +1,4 @@
-// Pantalla "Detalles": segunda pantalla del Stack de productos (Drawer → Productos → Detalles).
+// Pantalla "Detalles": segunda pantalla del Stack de productos (Drawer → Principal → Otro → Detalles).
 // Recibe el producto que eligió Lista y tiene un botón para volver atrás en la pila.
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';

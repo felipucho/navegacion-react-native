@@ -1,4 +1,4 @@
-// Pantalla "Lista": primera pantalla del Stack de productos (Drawer → Productos → Lista).
+// Pantalla "Lista": primera pantalla del Stack de productos (Drawer → Principal → Otro → Lista).
 // Muestra los productos con FlatList y, al tocar uno, abre Detalles pasándole el producto.
 import { View, Text, FlatList, Pressable, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
